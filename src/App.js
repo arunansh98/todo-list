@@ -24,10 +24,36 @@ export default function App() {
         return addTaskToListIndex(state, action.listIndex, action.value);
       case "deleteTask":
         return deleteTaskFromListIndex(state, action.value);
+      case "editTask":
+        return editTaskIndexFromListIndex(state, action.value);
       default:
         throw new Error("no action matched !");
     }
   };
+
+  function editTaskIndexFromListIndex(state, value) {
+    const { taskIndex, listIndex, name, desc } = value;
+    return {
+      ...state,
+      lists: state.lists.map((list, index1) => {
+        if (index1 === listIndex) {
+          return {
+            ...list,
+            tasks: list.tasks.map((task, index2) => {
+              if (index2 === taskIndex) {
+                return {
+                  name,
+                  desc,
+                };
+              }
+              return task;
+            }),
+          };
+        }
+        return list;
+      }),
+    };
+  }
 
   function deleteTaskFromListIndex(state, value) {
     const { listIndex, taskIndex } = value;

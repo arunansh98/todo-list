@@ -3,7 +3,7 @@ import { ListsContext } from "../App";
 import List from "./List";
 
 export default function Lists() {
-  const { state, dispatch } = useContext(ListsContext);
+  const { state } = useContext(ListsContext);
 
   const { lists } = state;
 

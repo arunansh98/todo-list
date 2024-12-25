@@ -15,6 +15,7 @@ export default function List(props) {
       style={{
         display: "flex",
         flexDirection: "column",
+        alignItems: "center",
       }}
     >
       <h1>{list.name}</h1>

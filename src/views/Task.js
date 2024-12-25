@@ -1,10 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ListsContext } from "../App";
+import Modal from "../components/Modal";
+import EditTaskInput from "./EditTaskInput";
 
 export default function Task(props) {
   const { task, taskIndex, listIndex } = props;
 
   const { dispatch } = useContext(ListsContext);
+
+  const [showEditTaskModal, setShowEditTaskModal] = useState(false);
 
   return (
     <div
@@ -48,10 +52,22 @@ export default function Task(props) {
           style={{
             marginLeft: "1rem",
           }}
+          onClick={() => setShowEditTaskModal(true)}
         >
           Edit
         </button>
       </div>
+      {showEditTaskModal && (
+        <Modal>
+          <EditTaskInput
+            name={task.name}
+            desc={task.desc}
+            taskIndex={taskIndex}
+            listIndex={listIndex}
+            setShowEditTaskModal={setShowEditTaskModal}
+          />
+        </Modal>
+      )}
     </div>
   );
 }
