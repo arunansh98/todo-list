@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.65fca48c.css","mappings":"AAAA,yBAGE,gBAAiB,CACjB,WAAY,CAFZ,iBAGF,CAEA,OACE,cACF","sources":["index.css"],"sourcesContent":["input,\r\ninput::placeholder {\r\n  text-align: center;\r\n  font-size: 1.5rem;\r\n  margin: auto;\r\n}\r\n\r\nbutton {\r\n  cursor: pointer;\r\n}\r\n"],"names":[],"sourceRoot":""}
