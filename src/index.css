@@ -1,0 +1,10 @@
+input,
+input::placeholder {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: auto;
+}
+
+button {
+  cursor: pointer;
+}
