@@ -22,10 +22,29 @@ export default function App() {
         };
       case "addTask":
         return addTaskToListIndex(state, action.listIndex, action.value);
+      case "deleteTask":
+        return deleteTaskFromListIndex(state, action.value);
       default:
         throw new Error("no action matched !");
     }
   };
+
+  function deleteTaskFromListIndex(state, value) {
+    const { listIndex, taskIndex } = value;
+    const newState = { ...state };
+    return {
+      ...newState,
+      lists: newState.lists.map((list, index1) => {
+        if (index1 === listIndex) {
+          return {
+            ...list,
+            tasks: list.tasks.filter((_task, index2) => index2 !== taskIndex),
+          };
+        }
+        return list;
+      }),
+    };
+  }
 
   function addTaskToListIndex(state, listIndex, value) {
     const { name, desc } = value;

@@ -55,7 +55,7 @@ export default function List(props) {
           >
             ADD TASK
           </button>
-          <Tasks tasks={tasks} />
+          <Tasks tasks={tasks} listIndex={index} />
         </div>
       </div>
       {showAddTaskModal && (

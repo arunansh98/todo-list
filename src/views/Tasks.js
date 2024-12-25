@@ -1,5 +1,7 @@
+import Task from "./Task";
+
 export default function Tasks(props) {
-  const { tasks } = props;
+  const { tasks, listIndex } = props;
 
   return (
     <div
@@ -10,27 +12,8 @@ export default function Tasks(props) {
         width: "100%",
       }}
     >
-      {tasks.map((task) => (
-        <div
-          style={{
-            height: "5rem",
-            width: "100%",
-            borderStyle: "solid",
-            borderColor: "black",
-            borderRadius: "5px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <div>
-            Name is <b>{task.name}</b>
-          </div>
-          <div>
-            Description is <b>{task.desc}</b>
-          </div>
-        </div>
+      {tasks.map((task, taskIndex) => (
+        <Task task={task} taskIndex={taskIndex} listIndex={listIndex} />
       ))}
     </div>
   );
