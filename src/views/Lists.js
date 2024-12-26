@@ -8,17 +8,7 @@ export default function Lists() {
   const { lists } = state;
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "row",
-        justifyContent: "start",
-        flexWrap: "wrap",
-        gap: "12rem",
-        marginLeft: "3rem",
-      }}
-    >
+    <div className="flex items-center flex-row justify-start flex-wrap gap-[12rem] ml-[3rem]">
       {lists.map((list, index) => (
         <List list={list} index={index} />
       ))}

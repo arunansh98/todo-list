@@ -15,42 +15,20 @@ export default function TaskInput(props) {
     <form onSubmit={(event) => event.preventDefault()}>
       <div>
         <div
-          style={{
-            textAlign: "right",
-            marginRight: "1rem",
-            marginTop: "1rem",
-            cursor: "pointer",
-          }}
+          className="text-right mr-[1rem] mt-[1rem] cursor-pointer"
           onClick={() => setShowAddTaskModal(false)}
         >
           X
         </div>
-        <div
-          style={{
-            display: "block",
-            textAlign: "center",
-            inset: "0px",
-            margin: "auto",
-            padding: "13%",
-          }}
-        >
-          <div
-            style={{
-              display: "block",
-            }}
-          >
+        <div className="block text-center inset-[0px] m-auto p-[13%]">
+          <div className="block">
             <TextInput
               value={name}
               onChange={(event) => setName(event.target.value)}
               placeholder="Enter name"
             />
           </div>
-          <div
-            style={{
-              display: "block",
-              marginTop: "2rem",
-            }}
-          >
+          <div className="block mt-[2rem]">
             <TextInput
               value={desc}
               onChange={(event) => setDesc(event.target.value)}
@@ -59,12 +37,7 @@ export default function TaskInput(props) {
           </div>
           <button
             type="submit"
-            style={{
-              height: "3rem",
-              width: "30rem",
-              marginTop: "2rem",
-              borderRadius: "10px",
-            }}
+            className="h-[3rem] w-[30rem] mt-[2rem] rounded-[10px]"
             disabled={!name || !desc}
             onClick={() => {
               setShowAddTaskModal(false);

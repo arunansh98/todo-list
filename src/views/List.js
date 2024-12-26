@@ -11,47 +11,12 @@ export default function List(props) {
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <div className="flex flex-col items-center">
       <h1>{list.name}</h1>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "45rem",
-          width: "30rem",
-          borderRadius: "5px",
-          borderColor: "black",
-          background: "white",
-          borderStyle: "solid",
-          padding: "1rem",
-          overflowY: "auto",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
-            marginLeft: "auto",
-            marginRight: "auto",
-            width: "100%",
-          }}
-        >
+      <div className="flex flex-col h-[45rem] w-[30rem] rounded-[5px] border-[black] bg-[white] border-solid p-[1rem] overflow-y-auto border-[2px]">
+        <div className="flex justify-center flex-col items-center mx-auto w-[100%]">
           <button
-            style={{
-              padding: "0.5rem",
-              borderRadius: "5px",
-              width: "fit-content",
-              justifyContent: "center",
-              marginBottom: "1rem",
-            }}
+            className="p-[0.5rem] rounded-[5px] w-[fit-content] justify-center mb-[1rem]"
             onClick={() => setShowAddTaskModal(true)}
           >
             ADD TASK

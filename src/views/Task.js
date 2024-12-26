@@ -11,31 +11,16 @@ export default function Task(props) {
   const [showEditTaskModal, setShowEditTaskModal] = useState(false);
 
   return (
-    <div
-      style={{
-        height: "5rem",
-        width: "100%",
-        borderStyle: "solid",
-        borderColor: "black",
-        borderRadius: "5px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <div className="h-[10rem] w-[100%] border-solid rounded-[5px] border-[black] border-[1px] flex flex-col items-center justify-around py-[1rem]">
       <div>
         Name is <b>{task.name}</b>
       </div>
       <div>
         Description is <b>{task.desc}</b>
       </div>
-      <div
-        style={{
-          marginTop: "3px",
-        }}
-      >
+      <div className="mt-[3px]">
         <button
+          className="px-[0.5rem]"
           onClick={() =>
             dispatch({
               type: "deleteTask",
@@ -49,9 +34,7 @@ export default function Task(props) {
           Delete
         </button>
         <button
-          style={{
-            marginLeft: "1rem",
-          }}
+          className="ml-[1rem] px-[0.5rem]"
           onClick={() => setShowEditTaskModal(true)}
         >
           Edit

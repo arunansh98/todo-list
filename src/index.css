@@ -1,10 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .outline-auto {
+    outline: auto;
+  }
+}
+
+input {
+  @apply border-solid border-[black] outline-auto;
+}
+
 input,
 input::placeholder {
-  text-align: center;
-  font-size: 1.5rem;
-  margin: auto;
+  @apply text-center text-[1.5rem] m-auto;
 }
 
 button {
-  cursor: pointer;
+  @apply cursor-pointer outline-auto;
+}
+
+button:disabled {
+  @apply opacity-[0.1] cursor-not-allowed;
 }

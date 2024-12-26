@@ -106,28 +106,16 @@ export default function App() {
     >
       <div>
         <form onSubmit={(event) => event.preventDefault()}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <div className="flex flex-col justify-center items-center">
             <TextInput
               value={listName}
               placeholder="Enter List Name"
               onChange={(event) => setListName(event.target.value)}
+              className="mt-[2rem]"
             />
             <button
               type="submit"
-              style={{
-                marginTop: "1rem",
-                height: "3rem",
-                width: "30rem",
-                borderRadius: "10px",
-                fontSize: "1.5rem",
-              }}
+              className="mt-[1rem] h-[3rem] w-[30rem] rounded-[10px] text-[1.5rem]"
               onClick={() =>
                 dispatch({
                   type: "addList",
