@@ -5,7 +5,7 @@ export default function Modal(props) {
   return createPortal(
     <>
       <div className="inset-[0px] bg-[black] fixed opacity-[0.4]"></div>
-      <div className="fixed inset-[10rem] bg-[white] z-[1000] rounded-[10px]">
+      <div className="fixed inset-[0rem] m-auto bg-[white] z-[1000] rounded-[10px] h-[50vh] w-[50vw]">
         {children}
       </div>
     </>,

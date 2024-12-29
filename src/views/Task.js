@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { ListsContext } from "../App";
 import Modal from "../components/Modal";
 import EditTaskInput from "./EditTaskInput";
+import { MdDeleteOutline } from "react-icons/md";
+import { CiEdit } from "react-icons/ci";
 
 export default function Task(props) {
   const { task, taskIndex, listIndex } = props;
@@ -18,9 +20,9 @@ export default function Task(props) {
       <div>
         Description is <b>{task.desc}</b>
       </div>
-      <div className="mt-[3px]">
-        <button
-          className="px-[0.5rem]"
+      <div className="mt-[3px] flex justify-center items-center">
+        <MdDeleteOutline
+          className="cursor-pointer !w-[8vw] h-[3vh]"
           onClick={() =>
             dispatch({
               type: "deleteTask",
@@ -30,15 +32,11 @@ export default function Task(props) {
               },
             })
           }
-        >
-          Delete
-        </button>
-        <button
-          className="ml-[1rem] px-[0.5rem]"
+        />
+        <CiEdit
+          className="cursor-pointer !w-[8vw] h-[3vh]"
           onClick={() => setShowEditTaskModal(true)}
-        >
-          Edit
-        </button>
+        />
       </div>
       {showEditTaskModal && (
         <Modal>

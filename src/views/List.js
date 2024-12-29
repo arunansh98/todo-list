@@ -13,7 +13,7 @@ export default function List(props) {
   return (
     <div className="flex flex-col items-center">
       <h1>{list.name}</h1>
-      <div className="flex flex-col h-[45rem] w-[30rem] rounded-[5px] border-[black] bg-[white] border-solid p-[1rem] overflow-y-auto border-[2px]">
+      <div className="list-container">
         <div className="flex justify-center flex-col items-center mx-auto w-[100%]">
           <button
             className="p-[0.5rem] rounded-[5px] w-[fit-content] justify-center mb-[1rem]"

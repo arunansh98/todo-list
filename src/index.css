@@ -24,3 +24,42 @@ button {
 button:disabled {
   @apply opacity-[0.1] cursor-not-allowed;
 }
+
+input {
+  @apply w-[23vw] h-[7vh];
+}
+
+button {
+  @apply !w-[30vw];
+}
+
+@media (max-width: 741px) {
+  input,
+  input::placeholder {
+    font-size: 3vw;
+  }
+}
+
+@media (max-width: 711px) {
+  button {
+    font-size: 3vw;
+  }
+}
+
+.lists {
+  @apply flex items-center flex-row justify-center flex-wrap gap-[20px];
+}
+
+.list-container {
+  @apply flex flex-col h-[47vh] w-[40vw] rounded-[5px] border-[black] bg-[white] border-solid p-[1rem] overflow-y-auto border-[2px];
+}
+
+@media (max-width: 750px) {
+  .lists {
+    @apply !flex-col gap-[0px];
+  }
+
+  .list-container {
+    @apply !w-[80vw];
+  }
+}

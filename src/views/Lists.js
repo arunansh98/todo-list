@@ -8,7 +8,7 @@ export default function Lists() {
   const { lists } = state;
 
   return (
-    <div className="flex items-center flex-row justify-start flex-wrap gap-[12rem] ml-[3rem]">
+    <div className="lists">
       {lists.map((list, index) => (
         <List list={list} index={index} />
       ))}

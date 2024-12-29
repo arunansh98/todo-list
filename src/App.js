@@ -112,10 +112,12 @@ export default function App() {
               placeholder="Enter List Name"
               onChange={(event) => setListName(event.target.value)}
               className="mt-[2rem]"
+              id="list-name"
             />
             <button
               type="submit"
-              className="mt-[1rem] h-[3rem] w-[30rem] rounded-[10px] text-[1.5rem]"
+              className="mt-[1rem] h-[6vh] rounded-[10px] text-[1.5rem]"
+              id="add-list"
               onClick={() =>
                 dispatch({
                   type: "addList",
