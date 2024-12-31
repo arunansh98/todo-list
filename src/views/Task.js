@@ -13,42 +13,45 @@ export default function Task(props) {
   const [showEditTaskModal, setShowEditTaskModal] = useState(false);
 
   return (
-    <div className="h-[10rem] w-[100%] border-solid rounded-[5px] border-[black] border-[1px] flex flex-col items-center justify-around py-[1rem]">
-      <div>
-        Name is <b>{task.name}</b>
-      </div>
-      <div>
-        Description is <b>{task.desc}</b>
-      </div>
-      <div className="mt-[3px] flex justify-center items-center">
-        <MdDeleteOutline
-          className="cursor-pointer !w-[8vw] h-[3vh]"
-          onClick={() =>
-            dispatch({
-              type: "deleteTask",
-              value: {
-                listIndex,
-                taskIndex,
-              },
-            })
-          }
-        />
-        <CiEdit
-          className="cursor-pointer !w-[8vw] h-[3vh]"
-          onClick={() => setShowEditTaskModal(true)}
-        />
-      </div>
-      {showEditTaskModal && (
-        <Modal>
-          <EditTaskInput
-            name={task.name}
-            desc={task.desc}
-            taskIndex={taskIndex}
-            listIndex={listIndex}
-            setShowEditTaskModal={setShowEditTaskModal}
+    <div>
+      <h1 className="font-[600] text-center">{taskIndex + 1}</h1>
+      <div className="h-[10rem] w-[100%] border-solid rounded-[5px] border-[black] border-[1px] flex flex-col items-center justify-around py-[1rem]">
+        <div>
+          Name is <b>{task.name}</b>
+        </div>
+        <div>
+          Description is <b>{task.desc}</b>
+        </div>
+        <div className="mt-[3px] flex justify-center items-center">
+          <MdDeleteOutline
+            className="cursor-pointer !w-[8vw] h-[3vh]"
+            onClick={() =>
+              dispatch({
+                type: "deleteTask",
+                value: {
+                  listIndex,
+                  taskIndex,
+                },
+              })
+            }
           />
-        </Modal>
-      )}
+          <CiEdit
+            className="cursor-pointer !w-[8vw] h-[3vh]"
+            onClick={() => setShowEditTaskModal(true)}
+          />
+        </div>
+        {showEditTaskModal && (
+          <Modal>
+            <EditTaskInput
+              name={task.name}
+              desc={task.desc}
+              taskIndex={taskIndex}
+              listIndex={listIndex}
+              setShowEditTaskModal={setShowEditTaskModal}
+            />
+          </Modal>
+        )}
+      </div>
     </div>
   );
 }
