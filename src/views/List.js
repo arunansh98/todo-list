@@ -11,7 +11,7 @@ export default function List(props) {
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
 
   return (
-    <div className="flex flex-col items-center">
+    <div key={index} className="flex flex-col items-center">
       <h1>{list.name}</h1>
       <div className="list-container">
         <div className="flex justify-center flex-col items-center mx-auto w-[100%]">

@@ -26,10 +26,31 @@ export default function App() {
         return deleteTaskFromListIndex(state, action.value);
       case "editTask":
         return editTaskIndexFromListIndex(state, action.value);
+      case "setTasks":
+        return setTasksAtListIndex(
+          state,
+          action.value.listIndex,
+          action.value.tasks
+        );
       default:
         throw new Error("no action matched !");
     }
   };
+
+  function setTasksAtListIndex(state, listIndex, tasks) {
+    return {
+      ...state,
+      lists: state.lists.map((list, index) => {
+        if (index === listIndex) {
+          return {
+            ...list,
+            tasks: tasks,
+          };
+        }
+        return list;
+      }),
+    };
+  }
 
   function editTaskIndexFromListIndex(state, value) {
     const { taskIndex, listIndex, name, desc } = value;

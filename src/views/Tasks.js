@@ -6,7 +6,13 @@ export default function Tasks(props) {
   return (
     <div className="flex flex-col gap-[1rem] w-[100%]">
       {tasks.map((task, taskIndex) => (
-        <Task task={task} taskIndex={taskIndex} listIndex={listIndex} />
+        <Task
+          key={taskIndex}
+          task={task}
+          tasks={tasks}
+          taskIndex={taskIndex}
+          listIndex={listIndex}
+        />
       ))}
     </div>
   );
