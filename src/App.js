@@ -32,10 +32,20 @@ export default function App() {
           action.value.listIndex,
           action.value.tasks
         );
+      case "setLists":
+        return setLists(state, action.value);
       default:
         throw new Error("no action matched !");
     }
   };
+
+  function setLists(state, actionValue) {
+    const { lists } = actionValue;
+    return {
+      ...state,
+      lists,
+    };
+  }
 
   function setTasksAtListIndex(state, listIndex, tasks) {
     return {

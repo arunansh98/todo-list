@@ -10,7 +10,7 @@ export default function Lists() {
   return (
     <div className="lists">
       {lists.map((list, index) => (
-        <List key={index} list={list} index={index} />
+        <List key={index} list={list} lists={lists} index={index} />
       ))}
     </div>
   );
