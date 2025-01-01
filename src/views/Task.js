@@ -4,6 +4,7 @@ import Modal from "../components/Modal";
 import EditTaskInput from "./EditTaskInput";
 import { MdDeleteOutline } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
+import DragDrop from "../components/DragDrop";
 
 export default function Task(props) {
   const { task, tasks, taskIndex, listIndex } = props;
@@ -12,55 +13,18 @@ export default function Task(props) {
 
   const [showEditTaskModal, setShowEditTaskModal] = useState(false);
 
-  const handleDragStart = (e, index) => {
-    e.dataTransfer.setData("text/plain", index);
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-
-    // Get the dragged and target indices
-    const draggedTaskIndex = parseInt(e.dataTransfer.getData("text/plain"), 10);
-    const targetTaskIndex = parseInt(e.currentTarget.dataset.index, 10);
-
-    // Ensure both indices are valid
-    if (isNaN(draggedTaskIndex) || isNaN(targetTaskIndex)) {
-      console.error("Invalid index detected.");
-      return;
-    }
-
-    // Clone the tasks array to avoid mutating state directly
-    const newTasks = [...tasks];
-
-    // Swap the dragged and target items
-    const temp = newTasks[draggedTaskIndex];
-    newTasks[draggedTaskIndex] = newTasks[targetTaskIndex];
-    newTasks[targetTaskIndex] = temp;
-
-    // Update the state using dispatch
+  const setTasks = (items) => {
     dispatch({
       type: "setTasks",
       value: {
         listIndex,
-        tasks: newTasks,
+        tasks: items,
       },
     });
   };
 
   return (
-    <div
-      key={taskIndex}
-      draggable
-      data-index={taskIndex}
-      onDragStart={(e) => handleDragStart(e, taskIndex)}
-      onDragOver={handleDragOver}
-      onDrop={handleDrop}
-      className="cursor-pointer"
-    >
+    <DragDrop index={taskIndex} items={tasks} setItemsAfterDrop={setTasks}>
       <h1 className="font-[600] text-center">{taskIndex + 1}</h1>
       <div className="h-[10rem] w-[100%] border-solid rounded-[5px] border-[black] border-[1px] flex flex-col items-center justify-around py-[1rem]">
         <div>
@@ -99,6 +63,6 @@ export default function Task(props) {
           </Modal>
         )}
       </div>
-    </div>
+    </DragDrop>
   );
 }
