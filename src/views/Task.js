@@ -24,7 +24,12 @@ export default function Task(props) {
   };
 
   return (
-    <DragDrop index={taskIndex} items={tasks} setItemsAfterDrop={setTasks}>
+    <DragDrop
+      index={taskIndex}
+      items={tasks}
+      setItemsAfterDrop={setTasks}
+      scope={"task-" + listIndex}
+    >
       <h1 className="font-[600] text-center">{taskIndex + 1}</h1>
       <div className="h-[10rem] w-[100%] border-solid rounded-[5px] border-[black] border-[1px] flex flex-col items-center justify-around py-[1rem]">
         <div>

@@ -24,7 +24,12 @@ export default function List(props) {
   };
 
   return (
-    <DragDrop index={index} items={lists} setItemsAfterDrop={setLists}>
+    <DragDrop
+      index={index}
+      items={lists}
+      setItemsAfterDrop={setLists}
+      scope="list"
+    >
       <div key={index} className="flex flex-col items-center">
         <h1>{list.name}</h1>
         <div className="list-container">
