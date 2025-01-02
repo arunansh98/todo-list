@@ -3,8 +3,8 @@ import TextInput from "../components/TextInput";
 import { ListsContext } from "../App";
 
 export default function EditListNameInput(props) {
-  const { index, setShowListNameEditModal } = props;
-  const [listName, setListName] = useState("");
+  const { index, name, setShowListNameEditModal } = props;
+  const [listName, setListName] = useState(name);
   const { dispatch } = useContext(ListsContext);
   return (
     <div>

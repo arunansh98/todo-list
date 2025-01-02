@@ -64,6 +64,7 @@ export default function List(props) {
         {showListNameEditModal && (
           <Modal>
             <EditListNameInput
+              name={list.name}
               index={index}
               setShowListNameEditModal={setShowListNameEditModal}
             />
