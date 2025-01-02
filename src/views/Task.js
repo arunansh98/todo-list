@@ -1,10 +1,9 @@
 import { useContext, useState } from "react";
 import { ListsContext } from "../App";
-import Modal from "../components/Modal";
-import EditTaskInput from "./EditTaskInput";
 import { MdDeleteOutline } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import DragDrop from "../components/DragDrop";
+import ModalInput from "./ModalInput";
 
 export default function Task(props) {
   const { task, tasks, taskIndex, listIndex } = props;
@@ -19,6 +18,18 @@ export default function Task(props) {
       value: {
         listIndex,
         tasks: items,
+      },
+    });
+  };
+
+  const handleInputSubmit = (inputs) => {
+    dispatch({
+      type: "editTask",
+      value: {
+        taskIndex,
+        listIndex,
+        name: inputs[0].value,
+        desc: inputs[1].value,
       },
     });
   };
@@ -57,15 +68,23 @@ export default function Task(props) {
           />
         </div>
         {showEditTaskModal && (
-          <Modal>
-            <EditTaskInput
-              name={task.name}
-              desc={task.desc}
-              taskIndex={taskIndex}
-              listIndex={listIndex}
-              setShowEditTaskModal={setShowEditTaskModal}
-            />
-          </Modal>
+          <ModalInput
+            inputs={[
+              {
+                key: "name",
+                placeholder: "Edit task name",
+                value: task.name,
+              },
+              {
+                key: "desc",
+                placeholder: "Edit task description",
+                value: task.desc,
+              },
+            ]}
+            onInputSubmit={handleInputSubmit}
+            showModal={showEditTaskModal}
+            setShowModal={setShowEditTaskModal}
+          />
         )}
       </div>
     </DragDrop>

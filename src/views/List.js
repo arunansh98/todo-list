@@ -1,11 +1,9 @@
 import { useContext, useState } from "react";
-import Modal from "../components/Modal";
-import TaskInput from "./TaskInput";
 import Tasks from "./Tasks";
 import DragDrop from "../components/DragDrop";
 import { ListsContext } from "../App";
 import { CiEdit } from "react-icons/ci";
-import EditListNameInput from "./EditListNameInput";
+import ModalInput from "./ModalInput";
 
 export default function List(props) {
   const { list, lists, index } = props;
@@ -23,6 +21,27 @@ export default function List(props) {
       type: "setLists",
       value: {
         lists: items,
+      },
+    });
+  };
+
+  const handleListNameInputSubmit = (inputs) => {
+    dispatch({
+      type: "editListName",
+      value: {
+        index,
+        name: inputs[0].value,
+      },
+    });
+  };
+
+  const handleAddTaskInputSubmit = (inputs) => {
+    dispatch({
+      type: "addTask",
+      listIndex: index,
+      value: {
+        name: inputs[0].value,
+        desc: inputs[1].value,
       },
     });
   };
@@ -54,21 +73,37 @@ export default function List(props) {
           </div>
         </div>
         {showAddTaskModal && (
-          <Modal>
-            <TaskInput
-              listIndex={index}
-              setShowAddTaskModal={setShowAddTaskModal}
-            />
-          </Modal>
+          <ModalInput
+            inputs={[
+              {
+                key: "name",
+                placeholder: "Enter task name",
+                value: "",
+              },
+              {
+                key: "desc",
+                placeholder: "Enter task description",
+                value: "",
+              },
+            ]}
+            onInputSubmit={handleAddTaskInputSubmit}
+            showModal={showAddTaskModal}
+            setShowModal={setShowAddTaskModal}
+          />
         )}
         {showListNameEditModal && (
-          <Modal>
-            <EditListNameInput
-              name={list.name}
-              index={index}
-              setShowListNameEditModal={setShowListNameEditModal}
-            />
-          </Modal>
+          <ModalInput
+            inputs={[
+              {
+                key: "name",
+                placeholder: "Edit list name",
+                value: list.name,
+              },
+            ]}
+            onInputSubmit={handleListNameInputSubmit}
+            showModal={showListNameEditModal}
+            setShowModal={setShowListNameEditModal}
+          />
         )}
       </div>
     </DragDrop>
