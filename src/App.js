@@ -34,10 +34,28 @@ export default function App() {
         );
       case "setLists":
         return setLists(state, action.value);
+      case "editListName":
+        return editListNameAtIndex(state, action.value);
       default:
         throw new Error("no action matched !");
     }
   };
+
+  function editListNameAtIndex(state, actionValue) {
+    const { index, name } = actionValue;
+    return {
+      ...state,
+      lists: state.lists.map((list, listIndex) => {
+        if (listIndex === index) {
+          return {
+            ...list,
+            name,
+          };
+        }
+        return list;
+      }),
+    };
+  }
 
   function setLists(state, actionValue) {
     const { lists } = actionValue;
@@ -135,7 +153,7 @@ export default function App() {
         dispatch,
       }}
     >
-      <div>
+      <div className="mb-[3rem]">
         <form onSubmit={(event) => event.preventDefault()}>
           <div className="flex flex-col justify-center items-center">
             <TextInput

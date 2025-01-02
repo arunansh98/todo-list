@@ -51,7 +51,7 @@ button {
 }
 
 .list-container {
-  @apply flex flex-col h-[47vh] w-[40vw] rounded-[5px] border-[black] bg-[white] border-solid p-[3rem] overflow-y-auto border-[2px];
+  @apply flex flex-col h-[47vh] w-[40vw] rounded-[5px] border-[black] bg-[white] border-solid p-[3rem] overflow-y-auto border-[2px] cursor-pointer;
 }
 
 @media (max-width: 750px) {

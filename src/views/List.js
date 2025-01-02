@@ -4,6 +4,8 @@ import TaskInput from "./TaskInput";
 import Tasks from "./Tasks";
 import DragDrop from "../components/DragDrop";
 import { ListsContext } from "../App";
+import { CiEdit } from "react-icons/ci";
+import EditListNameInput from "./EditListNameInput";
 
 export default function List(props) {
   const { list, lists, index } = props;
@@ -11,6 +13,8 @@ export default function List(props) {
   const { tasks } = list;
 
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
+
+  const [showListNameEditModal, setShowListNameEditModal] = useState(false);
 
   const { dispatch } = useContext(ListsContext);
 
@@ -30,8 +34,14 @@ export default function List(props) {
       setItemsAfterDrop={setLists}
       scope="list"
     >
-      <div key={index} className="flex flex-col items-center">
-        <h1>{list.name}</h1>
+      <div key={index} className="flex flex-col items-center cursor-auto">
+        <div className="flex flex-row items-center">
+          <h1 className="text-[1.5rem] mr-[1rem]">{list.name}</h1>
+          <CiEdit
+            className="cursor-pointer text-[2.4rem]"
+            onClick={() => setShowListNameEditModal(true)}
+          />
+        </div>
         <div className="list-container">
           <div className="flex justify-center flex-col items-center mx-auto w-[100%]">
             <button
@@ -48,6 +58,14 @@ export default function List(props) {
             <TaskInput
               listIndex={index}
               setShowAddTaskModal={setShowAddTaskModal}
+            />
+          </Modal>
+        )}
+        {showListNameEditModal && (
+          <Modal>
+            <EditListNameInput
+              index={index}
+              setShowListNameEditModal={setShowListNameEditModal}
             />
           </Modal>
         )}
