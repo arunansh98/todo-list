@@ -89,6 +89,7 @@ export default function List(props) {
             onInputSubmit={handleAddTaskInputSubmit}
             showModal={showAddTaskModal}
             setShowModal={setShowAddTaskModal}
+            onSubmitLabel="ADD"
           />
         )}
         {showListNameEditModal && (
@@ -103,6 +104,7 @@ export default function List(props) {
             onInputSubmit={handleListNameInputSubmit}
             showModal={showListNameEditModal}
             setShowModal={setShowListNameEditModal}
+            onSubmitLabel="EDIT"
           />
         )}
       </div>

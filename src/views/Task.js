@@ -84,6 +84,7 @@ export default function Task(props) {
             onInputSubmit={handleInputSubmit}
             showModal={showEditTaskModal}
             setShowModal={setShowEditTaskModal}
+            onSubmitLabel="EDIT"
           />
         )}
       </div>

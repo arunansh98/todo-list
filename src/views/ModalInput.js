@@ -3,7 +3,7 @@ import TextInput from "../components/TextInput";
 import Modal from "../components/Modal";
 
 export default function ModalInput(props) {
-  const { inputs, onInputSubmit, setShowModal } = props;
+  const { inputs, onInputSubmit, setShowModal, onSubmitLabel } = props;
 
   const reducerFunction = (state, action) => {
     switch (action.type) {
@@ -77,7 +77,7 @@ export default function ModalInput(props) {
                 onInputSubmit(state.inputs);
               }}
             >
-              EDIT
+              {onSubmitLabel}
             </button>
           </div>
         </div>
